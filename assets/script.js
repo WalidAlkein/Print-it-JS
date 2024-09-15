@@ -29,3 +29,33 @@ document.querySelector('.arrow_right').addEventListener('click', () => {
     currentIndex = (currentIndex === slides.length - 1) ? 0 : currentIndex + 1;
     updateBanner();
 });
+
+
+let currentIndex = 0;
+
+// Sélection des éléments HTML à modifier
+const bannerImg = document.querySelector('.banner-img');
+const bannerText = document.querySelector('#banner p');
+const dots = document.querySelectorAll('.dot');
+
+// Fonction pour mettre à jour l'image, le texte et les dots
+function updateBanner() {
+    bannerImg.src = `./assets/images/slideshow/${slides[currentIndex].image}`;
+    bannerText.innerHTML = slides[currentIndex].tagLine;
+
+    // Mise à jour des dots pour indiquer l'image active
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('dot_selected', index === currentIndex);
+    });
+}
+
+// Gestion des dots
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateBanner();
+    });
+});
+
+// Initialisation du carrousel 
+updateBanner();
