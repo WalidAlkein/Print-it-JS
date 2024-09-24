@@ -17,6 +17,8 @@ const slides = [
 	}
 ];
 
+let currentIndex = 0;
+
 // Gestion des flèches
 document.querySelector('.arrow_left').addEventListener('click', () => {
 	console.log('Flèche gauche cliquée');
@@ -31,7 +33,6 @@ document.querySelector('.arrow_right').addEventListener('click', () => {
 });
 
 
-let currentIndex = 0;
 
 // Sélection des éléments HTML à modifier
 const bannerImg = document.querySelector('.banner-img');
@@ -41,6 +42,7 @@ const dots = document.querySelectorAll('.dot');
 // Fonction pour mettre à jour l'image, le texte et les dots
 function updateBanner() {
     bannerImg.src = `./assets/images/slideshow/${slides[currentIndex].image}`;
+	bannerImg.alt = slides[currentIndex].tagLine
     bannerText.innerHTML = slides[currentIndex].tagLine;
 
     // Mise à jour des dots pour indiquer l'image active
